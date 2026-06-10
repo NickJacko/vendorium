@@ -14,10 +14,6 @@ namespace Vendorium
         [SerializeField] private int targetFPS = 60;
         [SerializeField] private float warningFPSThreshold = 45f;
 
-        [Header("NavMesh-Optimierung")]
-        // NavMeshAgent-Update-Intervall: nur alle N Frames neu berechnen
-        [SerializeField] private float navMeshUpdateInterval = 0.2f;
-
         [Header("FPS-Anzeige (Debug)")]
         [SerializeField] private bool showFPSOverlay = false;
 
@@ -67,7 +63,7 @@ namespace Vendorium
         {
             // Alle NavMeshAgents im Projekt bekommen ein reduziertes Update-Intervall.
             // (In CustomerController wird dies bereits berücksichtigt.)
-            foreach (var agent in FindObjectsOfType<NavMeshAgent>())
+            foreach (var agent in FindObjectsByType<NavMeshAgent>(FindObjectsSortMode.None))
             {
                 // Keine direkte API für Update-Intervall in NavMeshAgent —
                 // stattdessen steuert CustomerController selbst wann es den Pfad updatet.
@@ -84,7 +80,7 @@ namespace Vendorium
             sb.AppendLine($"Plattform       : {Application.platform}");
             sb.AppendLine($"Unity Version   : {Application.unityVersion}");
             sb.AppendLine($"Qualitätsstufe  : {QualitySettings.names[QualitySettings.GetQualityLevel()]}");
-            sb.AppendLine($"Auflösung       : {Screen.width}x{Screen.height} @ {Screen.currentResolution.refreshRate}Hz");
+            sb.AppendLine($"Auflösung       : {Screen.width}x{Screen.height} @ {Screen.currentResolution.refreshRateRatio}Hz");
             sb.AppendLine($"VSync           : {QualitySettings.vSyncCount}");
             sb.AppendLine($"Ziel-FPS        : {targetFPS}");
             sb.AppendLine($"RAM gesamt      : {SystemInfo.systemMemorySize} MB");
@@ -93,7 +89,7 @@ namespace Vendorium
             sb.AppendLine($"CPU Kerne       : {SystemInfo.processorCount}");
 
             sb.AppendLine("--- Szenen-Objekte ---");
-            sb.AppendLine($"GameObjects in Szene : {FindObjectsOfType<GameObject>().Length}");
+            sb.AppendLine($"GameObjects in Szene : {FindObjectsByType<GameObject>(FindObjectsSortMode.None).Length}");
             sb.AppendLine($"Aktive Kunden        : {CustomerManager.Instance?.ActiveCustomerCount ?? 0}");
             sb.AppendLine($"Platzierte Automaten : {MachineManager.Instance?.MachineCount ?? 0}");
 
@@ -110,7 +106,7 @@ namespace Vendorium
         public void MarkStaticObjects()
         {
             int count = 0;
-            foreach (var go in FindObjectsOfType<GameObject>())
+            foreach (var go in FindObjectsByType<GameObject>(FindObjectsSortMode.None))
             {
                 if (go.CompareTag("Wall") || go.CompareTag("Floor") || go.CompareTag("Ceiling"))
                 {

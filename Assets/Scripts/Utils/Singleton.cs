@@ -24,9 +24,9 @@ namespace Vendorium
                 {
                     if (_instance == null)
                     {
-                        _instance = FindObjectOfType<T>();
+                        _instance = FindAnyObjectByType<T>();
 
-                        if (FindObjectsOfType<T>().Length > 1)
+                        if (FindObjectsByType<T>(FindObjectsSortMode.None).Length > 1)
                         {
                             Debug.LogError($"[Singleton] Mehrere Instanzen von {typeof(T)} gefunden!");
                             return _instance;

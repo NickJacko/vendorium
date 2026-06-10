@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.AI.NavMesh;
 
 namespace Vendorium
 {
@@ -80,7 +81,7 @@ namespace Vendorium
             }
 
             // NavMesh neu backen damit Kunden den neuen Raum betreten können
-            NavMeshSurface surface = FindObjectOfType<NavMeshSurface>();
+            NavMeshSurface surface = FindAnyObjectByType<NavMeshSurface>();
             if (surface != null)
                 surface.BuildNavMesh();
             else

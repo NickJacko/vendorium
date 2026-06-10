@@ -217,8 +217,8 @@ namespace Vendorium
 
         private string MakePairKey(VendingMachine a, VendingMachine b)
         {
-            int idA = a.GetInstanceID();
-            int idB = b.GetInstanceID();
+            uint idA = a.GetEntityId();
+            uint idB = b.GetEntityId();
             return idA < idB ? $"{idA}_{idB}" : $"{idB}_{idA}";
         }
 
