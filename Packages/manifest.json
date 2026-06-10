@@ -1,7 +1,8 @@
 {
   "dependencies": {
-    "com.unity.ai.navigation": "2.0.12",
+    "com.unity.ai.navigation": "2.0.13",
     "com.unity.cinemachine": "2.10.7",
+    "com.unity.inputsystem": "1.19.0",
     "com.unity.multiplayer.center": "1.0.1",
     "com.unity.nuget.newtonsoft-json": "3.2.2",
     "com.unity.probuilder": "6.0.9",
