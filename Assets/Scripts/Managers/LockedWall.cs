@@ -79,13 +79,8 @@ namespace Vendorium
                 yield return null;
             }
 
-            // NavMesh neu backen damit Kunden den neuen Raum betreten können
-            // TODO: Install AI Navigation package, then uncomment:
-            // NavMeshSurface surface = FindAnyObjectByType<NavMeshSurface>();
-            // if (surface != null)
-            //     surface.BuildNavMesh();
-            // else
-            Debug.LogWarning("[LockedWall] NavMeshSurface nicht verfügbar — NavMesh manuell neu backen!");
+            // NavMesh neu backen wenn AI Navigation Package installiert ist
+            Debug.LogWarning("[LockedWall] NavMeshSurface nicht verfügbar — Installiere AI Navigation Package!");
 
             _isUnlocked = true;
             gameObject.SetActive(false);
