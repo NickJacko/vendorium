@@ -161,7 +161,7 @@ namespace Vendorium
             foreach (var col in _ghostObject.GetComponentsInChildren<Collider>())
                 col.enabled = false;
             foreach (var script in _ghostObject.GetComponentsInChildren<MonoBehaviour>())
-                if (!(script is Renderer) && !(script is MeshFilter))
+                if (!(script is PlacementManager))
                     script.enabled = false;
 
             _ghostRenderers = _ghostObject.GetComponentsInChildren<Renderer>();

@@ -12,7 +12,6 @@ namespace Vendorium
         [SerializeField] private Camera playerCamera;
 
         [Header("Einstellungen")]
-        [SerializeField] private float baseTransactionTime = 2f;
         // 30% der Transaktionen lösen das Wechselgeld-Minigame aus
         [SerializeField, Range(0f, 1f)] private float changeGameChance = 0.3f;
 

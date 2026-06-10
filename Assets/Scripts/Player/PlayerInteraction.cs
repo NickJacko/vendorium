@@ -23,7 +23,7 @@ namespace Vendorium
         private void Start()
         {
             _player = GetComponentInParent<PlayerController>();
-            _prompt = FindObjectOfType<InteractionPrompt>();
+            _prompt = FindAnyObjectByType<InteractionPrompt>();
         }
 
         private void Update()

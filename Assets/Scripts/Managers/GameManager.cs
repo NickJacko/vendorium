@@ -71,7 +71,7 @@ namespace Vendorium
         {
             if (existing != null) return existing;
 
-            T found = FindObjectOfType<T>();
+            T found = FindAnyObjectByType<T>();
             if (found != null) return found;
 
             var go = new GameObject(goName);
