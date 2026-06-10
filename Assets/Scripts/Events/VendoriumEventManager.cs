@@ -96,30 +96,11 @@ namespace Vendorium
         public float DurchschnittlicheZufriedenheit;
     }
 
-    // Platzhalter-Klasse — wird in VendingMachine.cs voll implementiert
-    public class VendingMachine : MonoBehaviour, IInteractable
-    {
-        public virtual void Interact(PlayerController player) { }
-        public virtual string GetInteractionText() => "[E] Automat inspizieren";
-        public virtual bool CanInteract() => true;
-    }
-
-    // Platzhalter — wird in CustomerController.cs voll implementiert
-    public class CustomerController : MonoBehaviour { }
-
-    // Platzhalter — wird in GameEvent.cs voll implementiert
     [Serializable]
     public class GameEventData
     {
         public string EventName;
         public EventType Type;
         public float Duration;
-    }
-
-    // Platzhalter — wird in DialogueSystem.cs voll implementiert
-    [Serializable]
-    public class DialogueData : ScriptableObject
-    {
-        public string CharacterName;
     }
 }

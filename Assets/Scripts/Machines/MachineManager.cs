@@ -39,7 +39,7 @@ namespace Vendorium
             if (machine == null || _placedMachines.Contains(machine)) return;
 
             _placedMachines.Add(machine);
-            _machineById[machine.GetInstanceID()] = machine;
+            _machineById[machine.GetEntityId()] = machine;
 
             VendoriumEventManager.Instance.TriggerMachinePlaced(machine);
             Debug.Log($"[MachineManager] Maschine registriert. Gesamt: {_placedMachines.Count}");
@@ -51,7 +51,7 @@ namespace Vendorium
             if (machine == null) return;
 
             _placedMachines.Remove(machine);
-            _machineById.Remove(machine.GetInstanceID());
+            _machineById.Remove(machine.GetEntityId());
 
             VendoriumEventManager.Instance.TriggerMachineRemoved(machine);
         }

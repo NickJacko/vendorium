@@ -31,7 +31,6 @@ namespace Vendorium
         private int _purchasesThisVisit = 0;
         private float _satisfactionScore = 70f;
         private float _waitTime = 0f;
-        private float _maxWaitTime = 15f;
 
         // Stammkunden-Tracking
         private string _customerId;

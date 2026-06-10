@@ -191,7 +191,7 @@ namespace Vendorium.Editor
         private void CheckPlayerSettings()
         {
             // IL2CPP
-            var backend = PlayerSettings.GetScriptingBackend(BuildTargetGroup.Standalone);
+            var backend = PlayerSettings.GetScriptingBackend(NamedBuildTarget.Standalone);
             bool isIL2CPP = backend == ScriptingImplementation.IL2CPP;
 
             _results.Add(new CheckItem

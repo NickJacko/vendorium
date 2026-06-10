@@ -74,7 +74,7 @@ namespace Vendorium
             var col = floor.GetComponent<Collider>();
             if (col != null)
             {
-                var pm = new PhysicMaterial("Floor_Physics");
+                var pm = new PhysicsMaterial("Floor_Physics");
                 pm.dynamicFriction = 0.6f;
                 pm.staticFriction  = 0.6f;
                 col.material = pm;
@@ -171,7 +171,7 @@ namespace Vendorium
             var col = wall.GetComponent<Collider>();
             if (col != null)
             {
-                var pm = new PhysicMaterial("Wall_Physics");
+                var pm = new PhysicsMaterial("Wall_Physics");
                 pm.dynamicFriction = 0.4f;
                 pm.staticFriction  = 0.4f;
                 pm.bounciness      = 0f;

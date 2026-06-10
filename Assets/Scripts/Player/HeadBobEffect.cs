@@ -13,7 +13,6 @@ namespace Vendorium
         [Header("Bob-Parameter (Überschreiben PlayerStats wenn gesetzt)")]
         [SerializeField] private float bobFrequency = 2f;
         [SerializeField] private float bobAmplitudeY = 0.05f;
-        [SerializeField] private float bobAmplitudeX = 0.025f;
         [SerializeField] private float smoothSpeed = 10f;
 
         private Vector3 _defaultLocalPos;
