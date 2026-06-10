@@ -1,5 +1,7 @@
 using UnityEngine;
 
+#pragma warning disable CS0618
+
 namespace Vendorium
 {
     // Generische Singleton-Basisklasse. Alle Manager erben davon.

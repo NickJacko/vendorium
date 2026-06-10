@@ -1,5 +1,7 @@
 using UnityEngine;
 
+#pragma warning disable CS0618
+
 namespace Vendorium
 {
     // Haupt-Orchestrator. Initialisiert alle Systeme, hält den GameState.

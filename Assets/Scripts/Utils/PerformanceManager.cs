@@ -3,6 +3,8 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Profiling;
 
+#pragma warning disable CS0618
+
 namespace Vendorium
 {
     // Performance-Monitoring und -Optimierung.

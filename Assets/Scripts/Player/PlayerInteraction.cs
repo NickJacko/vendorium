@@ -1,5 +1,7 @@
 using UnityEngine;
 
+#pragma warning disable CS0618
+
 namespace Vendorium
 {
     // Sitzt auf MainCamera. Raycast nach vorne, findet IInteractable.

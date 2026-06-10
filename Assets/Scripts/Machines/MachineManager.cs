@@ -2,6 +2,8 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
+#pragma warning disable CS0618
+
 namespace Vendorium
 {
     public class MachineManager : Singleton<MachineManager>

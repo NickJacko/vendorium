@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+#pragma warning disable CS0618
+
 namespace Vendorium
 {
     // Scannt alle platzierten Automaten, prüft Nachbarschaften (2.5m Radius),
