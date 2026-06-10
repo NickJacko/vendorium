@@ -6,7 +6,7 @@ namespace Vendorium
 {
     // Überschreibt den Platzhalter aus VendoriumEventManager.cs
     [CreateAssetMenu(menuName = "VendoriumData/DialogueData", fileName = "New_DialogueData")]
-    public new class DialogueData : ScriptableObject
+    public class DialogueData : ScriptableObject
     {
         [Header("Charakter")]
         public string CharacterName;

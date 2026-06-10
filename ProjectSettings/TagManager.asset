@@ -15,35 +15,35 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  -
+  - ""
   - Water
   - UI
-  -
-  -
+  - ""
+  - ""
   - Floor
   - Wall
   - Machine
   - Interactable
   - Player
   - Customer
-  -
-  -
-  -
-  -
-  -
-  -
-  -
-  -
-  -
-  -
-  -
-  -
-  -
-  -
-  -
-  -
-  -
-  -
+  - ""
+  - ""
+  - ""
+  - ""
+  - ""
+  - ""
+  - ""
+  - ""
+  - ""
+  - ""
+  - ""
+  - ""
+  - ""
+  - ""
+  - ""
+  - ""
+  - ""
+  - ""
   m_SortingLayers:
   - name: Default
     uniqueID: 0

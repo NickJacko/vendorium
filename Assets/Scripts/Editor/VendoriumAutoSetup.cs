@@ -6,10 +6,10 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.EventSystems;
 using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 using UnityEngine.UI;
 using TMPro;
 using Unity.AI.Navigation;
-using UnityEngine.Rendering.Universal;
 
 namespace Vendorium.Editor
 {
@@ -83,57 +83,18 @@ namespace Vendorium.Editor
 
         private static void SetupURPPipeline()
         {
+            // Unity 6 erstellt URP Global Settings automatisch — wir brauchen
+            // nur das Post-Processing Volume Profile anlegen.
             EnsureDirectory("Assets/Settings");
 
-            const string rendererPath = "Assets/Settings/URP_ForwardRenderer.asset";
-            const string urpAssetPath = "Assets/Settings/URP_PipelineAsset.asset";
-            const string volumePath   = "Assets/Settings/URP_GlobalVolume.asset";
-
-            // Renderer Data
-            UniversalRendererData rendererData = AssetDatabase.LoadAssetAtPath<UniversalRendererData>(rendererPath);
-            if (rendererData == null)
+            const string volumePath = "Assets/Settings/URP_GlobalVolume.asset";
+            if (!AssetExists(volumePath))
             {
-                rendererData = ScriptableObject.CreateInstance<UniversalRendererData>();
-                AssetDatabase.CreateAsset(rendererData, rendererPath);
-                Debug.Log("[Setup] URP ForwardRenderer erstellt.");
+                var vol = ScriptableObject.CreateInstance<VolumeProfile>();
+                AssetDatabase.CreateAsset(vol, volumePath);
+                Debug.Log("[Setup] Volume Profile erstellt.");
             }
 
-            // Pipeline Asset
-            UniversalRenderPipelineAsset urpAsset = AssetDatabase.LoadAssetAtPath<UniversalRenderPipelineAsset>(urpAssetPath);
-            if (urpAsset == null)
-            {
-                urpAsset = UniversalRenderPipelineAsset.Create(rendererData);
-                // Komfortable Defaults: MSAA 2x, Schatten bei 50m, HDR an
-                urpAsset.msaaSampleCount = 2;
-                urpAsset.shadowDistance  = 50f;
-                urpAsset.supportsHDR     = true;
-                AssetDatabase.CreateAsset(urpAsset, urpAssetPath);
-                Debug.Log("[Setup] URP Pipeline Asset erstellt.");
-            }
-
-            // Allen Quality-Levels zuweisen + als Default setzen
-            GraphicsSettings.defaultRenderPipeline = urpAsset;
-            for (int i = 0; i < QualitySettings.names.Length; i++)
-            {
-                QualitySettings.SetQualityLevel(i, false);
-                QualitySettings.renderPipeline = urpAsset;
-            }
-            QualitySettings.SetQualityLevel(3, false); // Zurück auf "High"
-
-            // Post-Processing Volume Profile
-            VolumeProfile volumeProfile = AssetDatabase.LoadAssetAtPath<VolumeProfile>(volumePath);
-            if (volumeProfile == null)
-            {
-                volumeProfile = ScriptableObject.CreateInstance<VolumeProfile>();
-                // Bloom & Tonemapping für den Laden-Look
-                volumeProfile.Add<Bloom>(overrides: true);
-                volumeProfile.Add<Tonemapping>(overrides: true);
-                volumeProfile.Add<ColorAdjustments>(overrides: true);
-                AssetDatabase.CreateAsset(volumeProfile, volumePath);
-                Debug.Log("[Setup] Post-Processing Volume Profile erstellt.");
-            }
-
-            EditorUtility.SetDirty(urpAsset);
             AssetDatabase.SaveAssets();
         }
 
